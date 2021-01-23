@@ -14,12 +14,15 @@ module glitcher(
 
 	// Ticks to wait into post DA to before starting Glitch 
 	// Note - NumberOfTicks * (1/ClockSpeed) = Delay time before Glitch
-	`define Glitch_Start 34720
+	// Trinity: 34720 (17360.0)
+	// Corona: 32709 (16354.5) use Exhaustive Fit Mode (Thanks Mena!)
+	// Exhaustive Fit Mode, select main.sch, Implementat Design, right-click Fit, Process Properties, check Exhaustive Fit Mode
+	`define Glitch_Start 32706 // 16353.0
 
 	// Glitch Cycles - i.e. how long hold CPU RESET low during Glitch
 	// Start with increment of 1 and work your way up to ~4 ticks
 	// Each tick is ~5.2ns in duration with a 192Mhz Dual Edgle clock
-	`define Glitch_Cycles 1
+	`define Glitch_Length 2
 
 	reg [15:0] tick_cnt;
 	reg cpu_glitch;
@@ -46,8 +49,9 @@ module glitcher(
 					cpu_glitch <= 1'b0;
 					
 				// Glitch is done, restore CPU RESET to high impedence
-				if(tick_cnt[15:0] >= `Glitch_Start + `Glitch_Cycles)
-					cpu_glitch <= 1'b1;
+				if(tick_cnt[15:0] >= `Glitch_Start + `Glitch_Length)
+					//cpu_glitch <= 1'b1; // Trinity
+					cpu_glitch <= 1'bZ; // Corona
 				else 
 					// Waiting for Glitch to complete, keep counting..
 					// But stop counting after glitch so we glitch just once.
