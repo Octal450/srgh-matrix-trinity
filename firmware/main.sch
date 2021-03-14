@@ -36,7 +36,7 @@
             <line x2="0" y1="-32" y2="-32" x1="64" />
         </blockdef>
         <blockdef name="hana_i2c">
-            <timestamp>2020-12-9T9:6:18</timestamp>
+            <timestamp>2021-1-23T0:36:47</timestamp>
             <rect width="256" x="64" y="-128" height="128" />
             <line x2="0" y1="-32" y2="-32" x1="64" />
             <line x2="0" y1="-96" y2="-96" x1="64" />
@@ -79,7 +79,7 @@
             <blockpin signalname="XLXN_79" name="glitch" />
         </block>
         <block symbolname="hana_i2c" name="I2C_HANA">
-            <blockpin signalname="XLXN_98" name="clk_400k" />
+            <blockpin signalname="XLXN_98" name="clk" />
             <blockpin signalname="XLXN_96" name="i2c_send" />
             <blockpin signalname="D_i2c_sda" name="i2c_sda_io" />
             <blockpin signalname="E_i2c_scl" name="i2c_scl_io" />
@@ -142,10 +142,10 @@
         </branch>
         <branch name="D_i2c_sda">
             <wire x2="1424" y1="1584" y2="1584" x1="1408" />
-            <wire x2="1440" y1="1584" y2="1584" x1="1424" />
+            <wire x2="1456" y1="1584" y2="1584" x1="1424" />
         </branch>
-        <iomarker fontsize="28" x="1440" y="1584" name="D_i2c_sda" orien="R0" />
         <iomarker fontsize="28" x="1456" y="1648" name="E_i2c_scl" orien="R0" />
         <iomarker fontsize="28" x="1456" y="1392" name="LED_dbg" orien="R0" />
+        <iomarker fontsize="28" x="1456" y="1584" name="D_i2c_sda" orien="R0" />
     </sheet>
 </drawing>
